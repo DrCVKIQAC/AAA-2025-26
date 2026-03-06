@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKR & SKR GCW(A) Kadapa – AAA Dashboard 2025-26</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy:#0D1B4B; --royal:#1565C0; --sky:#1E88E5; --cyan:#00ACC1;
+  --teal:#00838F; --orange:#F57C00; --amber:#FFB300; --gold:#FDD835;
+  --green:#2E7D32; --lime:#43A047; --pink:#D81B60; --purple:#6A1B9A;
+  --red:#C62828; --white:#FFFFFF; --offwhite:#F0F4FF;
+  --muted:#546E7A; --border:#E3EAF8; --text:#1A237E;
+  --shadow:0 4px 24px rgba(13,27,75,0.12);
+  --shadow-lg:0 8px 40px rgba(13,27,75,0.18);
+  --ff:'Segoe UI',Arial,sans-serif;
+}
+body { font-family:var(--ff); background:var(--offwhite); color:var(--text); min-height:100vh; overflow-x:hidden; }
+
+/* TICKER */
+.ticker-wrap{background:var(--amber);overflow:hidden;padding:6px 0;}
+.ticker-inner{display:flex;animation:ticker 55s linear infinite;white-space:nowrap;}
+.ticker-inner:hover{animation-play-state:paused;}
+.ticker-inner span{font-size:13px;font-weight:800;color:var(--navy);padding:0 44px;letter-spacing:.4px;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HEADER */
+.header{background:linear-gradient(135deg,var(--navy) 0%,var(--royal) 55%,var(--sky) 100%);color:white;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,179,0,.15);}
+.header::after{content:'';position:absolute;bottom:-80px;left:30%;width:320px;height:320px;border-radius:50%;background:rgba(0,172,193,.10);}
+.header-inner{max-width:1400px;margin:0 auto;padding:18px 28px 15px;display:flex;align-items:center;gap:22px;position:relative;z-index:1;}
+.header-logo{width:70px;height:70px;background:rgba(255,255,255,.15);border:3px solid rgba(255,255,255,.4);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;flex-shrink:0;}
+.header-text{flex:1;}
+.header-text .gov{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.8;}
+.header-text .college{font-size:24px;font-weight:900;line-height:1.1;margin:3px 0;}
+.header-text .subtitle{font-size:12px;opacity:.85;}
+.header-right{text-align:right;flex-shrink:0;}
+.aaa-badge{background:linear-gradient(135deg,var(--amber),var(--orange));color:var(--navy);font-weight:800;font-size:14px;padding:5px 18px;border-radius:30px;letter-spacing:1px;box-shadow:0 2px 12px rgba(255,179,0,.5);display:inline-block;margin-bottom:6px;}
+.header-principal{font-size:12px;opacity:.88;line-height:1.6;}
+.header-principal strong{color:var(--gold);}
+.header-date{font-size:11px;opacity:.7;margin-top:3px;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#69F0AE;display:inline-block;margin-right:4px;animation:pulse 1.8s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+
+/* NAV */
+.nav-strip{background:var(--navy);border-bottom:3px solid var(--amber);}
+.nav-inner{max-width:1400px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-tab{padding:11px 16px;color:rgba(255,255,255,.55);cursor:pointer;white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:.3px;border-bottom:3px solid transparent;margin-bottom:-3px;transition:all .2s;display:flex;align-items:center;gap:6px;text-transform:uppercase;user-select:none;}
+.nav-tab:hover{color:white;background:rgba(255,255,255,.06);}
+.nav-tab.active{color:var(--gold);border-bottom-color:var(--amber);background:rgba(253,216,53,.07);}
+
+/* MAIN */
+.main{max-width:1400px;margin:0 auto;padding:22px 22px 40px;}
+.tab-panel{display:none;animation:fadeIn .3s ease;}
+.tab-panel.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTION TITLE */
+.section-title{font-size:20px;font-weight:900;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:3px solid var(--amber);}
+
+/* STAT CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-bottom:22px;}
+.stat-card{background:#fff;border-radius:14px;padding:18px 14px 14px;box-shadow:var(--shadow);border-top:4px solid var(--royal);text-align:center;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;cursor:default;}
+.stat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.stat-icon{font-size:26px;margin-bottom:7px;display:block;}
+.stat-value{font-size:34px;font-weight:900;line-height:1;margin-bottom:4px;}
+.stat-label{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.4px;text-transform:uppercase;}
+.stat-sub{font-size:10px;color:var(--muted);margin-top:3px;}
+.c-blue{border-top-color:var(--royal)}.c-blue .stat-value{color:var(--royal)}
+.c-teal{border-top-color:var(--teal)}.c-teal .stat-value{color:var(--teal)}
+.c-orange{border-top-color:var(--orange)}.c-orange .stat-value{color:var(--orange)}
+.c-green{border-top-color:var(--green)}.c-green .stat-value{color:var(--green)}
+.c-purple{border-top-color:var(--purple)}.c-purple .stat-value{color:var(--purple)}
+.c-pink{border-top-color:var(--pink)}.c-pink .stat-value{color:var(--pink)}
+.c-amber{border-top-color:var(--amber)}.c-amber .stat-value{color:var(--orange)}
+.c-cyan{border-top-color:var(--cyan)}.c-cyan .stat-value{color:var(--cyan)}
+.c-navy{border-top-color:var(--navy)}.c-navy .stat-value{color:var(--navy)}
+
+/* GRIDS */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px;}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:22px;}
+.grid-12{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin-bottom:22px;}
+@media(max-width:900px){.grid-2,.grid-3,.grid-12{grid-template-columns:1fr;}}
+
+/* CHART CARDS */
+.chart-card{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);}
+.chart-card h3{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.chart-card h3 .dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex-shrink:0;}
+canvas{display:block;}
+
+/* TABLES */
+.table-card{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);overflow-x:auto;margin-bottom:18px;}
+.table-card h3{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:12px;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead tr{background:var(--navy);color:white;}
+thead th{padding:9px 11px;font-weight:700;text-align:left;font-size:12px;letter-spacing:.3px;}
+tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
+tbody tr:hover{background:#EEF3FF;}
+tbody td{padding:8px 11px;}
+.badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:800;}
+.badge-green{background:#E8F5E9;color:var(--green);}
+.badge-blue{background:#E3F2FD;color:var(--royal);}
+.badge-orange{background:#FFF3E0;color:var(--orange);}
+.badge-teal{background:#E0F7FA;color:var(--teal);}
+.badge-purple{background:#F3E5F5;color:var(--purple);}
+
+/* PROGRESS */
+.progress-list{display:flex;flex-direction:column;gap:11px;}
+.progress-header{display:flex;justify-content:space-between;margin-bottom:4px;}
+.progress-label{font-size:12px;font-weight:700;}
+.progress-val{font-size:12px;font-weight:800;}
+.progress-bar{height:9px;background:#E3EAF8;border-radius:5px;overflow:hidden;}
+.progress-fill{height:100%;border-radius:5px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+
+/* ACHIEVE CARDS */
+.achieve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:22px;}
+.achieve-card{background:#fff;border-radius:14px;padding:16px;box-shadow:var(--shadow);display:flex;gap:13px;align-items:flex-start;transition:transform .2s;}
+.achieve-card:hover{transform:translateY(-3px);}
+.achieve-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.achieve-text h4{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.achieve-text p{font-size:12px;color:var(--muted);line-height:1.5;}
+
+/* INFO CARDS */
+.info-card{background:#fff;border-radius:14px;padding:15px 17px;box-shadow:var(--shadow);border-left:5px solid var(--royal);}
+.info-card h3{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:7px;}
+.info-card p{font-size:12px;color:var(--muted);line-height:1.6;}
+
+/* PROG PILLS */
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:20px;}
+.prog-pill{background:#fff;border-radius:9px;padding:8px 12px;box-shadow:0 2px 8px rgba(13,27,75,.07);display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;border-left:4px solid var(--royal);}
+
+/* INFRA GRID */
+.infra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:22px;}
+.infra-card{background:#fff;border-radius:13px;padding:14px 10px;text-align:center;box-shadow:var(--shadow);transition:transform .2s;border-bottom:3px solid var(--cyan);}
+.infra-card:hover{transform:translateY(-3px);}
+.infra-icon{font-size:24px;margin-bottom:6px;}
+.infra-val{font-size:22px;font-weight:900;color:var(--teal);}
+.infra-lbl{font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;margin-top:2px;}
+
+/* REC ITEMS */
+.rec-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.rec-item{background:#fff;border-radius:10px;padding:12px 14px;box-shadow:0 2px 10px rgba(13,27,75,.07);display:grid;grid-template-columns:28px 1fr 1fr;gap:12px;align-items:center;border-left:4px solid var(--green);}
+.rec-num{font-size:12px;font-weight:700;color:var(--muted);}
+.rec-text{font-size:12px;font-weight:700;}
+.rec-action{font-size:11.5px;color:var(--muted);}
+@media(max-width:700px){.rec-item{grid-template-columns:1fr;}}
+
+/* FOOTER */
+.footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:14px 20px;font-size:12px;line-height:1.9;}
+.footer a{color:var(--amber);text-decoration:none;}
+.footer strong{color:var(--amber);}
+.footer .dev-line{margin-top:7px;padding-top:8px;border-top:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);font-size:12px;}
+.footer .dev-line strong{color:var(--amber);}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:#f0f4ff;}
+::-webkit-scrollbar-thumb{background:var(--royal);border-radius:4px;}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap"><div class="ticker-inner">
+  <span>🎓 SKR &amp; SKR GCW(A) KADAPA — EMPOWERING WOMEN SINCE 1973</span>
+  <span>🏆 7th RANK IN AP STATE · 31st NATIONAL · 451st WORLDWIDE (NIRF 2024-25)</span>
+  <span>✅ 100% PASS RATE — ALL PROGRAMMES — FINAL YEAR 2024-25</span>
+  <span>🌿 GREEN AUDIT CERTIFIED · AUTONOMOUS SINCE 2016 · NAAC 3rd CYCLE JULY 2023</span>
+  <span>💼 155 STUDENTS PLACED · 10 COMPANIES · 617 INTERNSHIPS COMPLETED</span>
+  <span>📚 26,062 BOOKS · 6,792 E-JOURNALS · 1,662 STUDENTS · 30 MoUs</span>
+  <span>🎓 SKR &amp; SKR GCW(A) KADAPA — EMPOWERING WOMEN SINCE 1973</span>
+  <span>🏆 7th RANK IN AP STATE · 31st NATIONAL · 451st WORLDWIDE (NIRF 2024-25)</span>
+  <span>✅ 100% PASS RATE — ALL PROGRAMMES — FINAL YEAR 2024-25</span>
+  <span>🌿 GREEN AUDIT CERTIFIED · AUTONOMOUS SINCE 2016 · NAAC 3rd CYCLE JULY 2023</span>
+  <span>💼 155 STUDENTS PLACED · 10 COMPANIES · 617 INTERNSHIPS COMPLETED</span>
+  <span>📚 26,062 BOOKS · 6,792 E-JOURNALS · 1,662 STUDENTS · 30 MoUs</span>
+</div></div>
+
+<!-- HEADER -->
+<div class="header"><div class="header-inner">
+  <div class="header-logo">🏛️</div>
+  <div class="header-text">
+    <div class="gov">Government of Andhra Pradesh · Commissionerate of Collegiate Education</div>
+    <div class="college">SKR &amp; SKR GOVT. COLLEGE FOR WOMEN (A), KADAPA</div>
+    <div class="subtitle">Autonomous Institution · Permanently Affiliated · NAAC Accredited · Est. 1973</div>
+  </div>
+  <div class="header-right">
+    <div class="aaa-badge">🎯 AAA 2025-26</div>
+    <div class="header-principal">Presented by <strong>Dr. V. Saleem Basha</strong><br>Principal · M.Sc., B.Ed., Ph.D.<br><span style="color:var(--gold)">drvsbchemistry@gmail.com</span></div>
+    <div class="header-date"><span class="live-dot"></span>Dashboard · AAA · Date: <span id="today-date"></span></div>
+  </div>
+</div></div>
+
+<!-- NAV -->
+<div class="nav-strip"><div class="nav-inner">
+  <div class="nav-tab active"  onclick="showTab('overview',this)">📊 Overview</div>
+  <div class="nav-tab" onclick="showTab('academics',this)">📚 Academics</div>
+  <div class="nav-tab" onclick="showTab('faculty',this)">👩‍🏫 Faculty</div>
+  <div class="nav-tab" onclick="showTab('students',this)">👩‍🎓 Students</div>
+  <div class="nav-tab" onclick="showTab('infra',this)">🏗️ Infrastructure</div>
+  <div class="nav-tab" onclick="showTab('research',this)">🔬 Research &amp; MoUs</div>
+  <div class="nav-tab" onclick="showTab('placements',this)">💼 Placements</div>
+  <div class="nav-tab" onclick="showTab('awards',this)">🏆 Awards</div>
+  <div class="nav-tab" onclick="showTab('governance',this)">⚖️ Governance</div>
+  <div class="nav-tab" onclick="showTab('naac',this)">✅ NAAC &amp; AAA</div>
+</div></div>
+
+<!-- MAIN -->
+<div class="main">
+
+<!-- ══ OVERVIEW ══ -->
+<div class="tab-panel active" id="tab-overview">
+  <div class="section-title">📊 College Profile at a Glance</div>
+  <div class="stats-grid">
+    <div class="stat-card c-navy"><span class="stat-icon">🏛️</span><div class="stat-value">1973</div><div class="stat-label">Established</div><div class="stat-sub">52 years of excellence</div></div>
+    <div class="stat-card c-blue"><span class="stat-icon">🎓</span><div class="stat-value" id="cnt-prog">0</div><div class="stat-label">Programmes</div><div class="stat-sub">UG + PG</div></div>
+    <div class="stat-card c-pink"><span class="stat-icon">👩‍🎓</span><div class="stat-value" id="cnt-stu">0</div><div class="stat-label">Students</div><div class="stat-sub">2024-25 Enrollment</div></div>
+    <div class="stat-card c-teal"><span class="stat-icon">👩‍🏫</span><div class="stat-value" id="cnt-fac">0</div><div class="stat-label">Teaching Staff</div><div class="stat-sub">Regular+Contract+Guest</div></div>
+    <div class="stat-card c-orange"><span class="stat-icon">🤝</span><div class="stat-value" id="cnt-mou">0</div><div class="stat-label">MoUs &amp; Linkages</div></div>
+    <div class="stat-card c-green"><span class="stat-icon">✅</span><div class="stat-value">100%</div><div class="stat-label">Pass Rate</div><div class="stat-sub">All programmes 2024-25</div></div>
+    <div class="stat-card c-purple"><span class="stat-icon">🏅</span><div class="stat-value">3rd</div><div class="stat-label">NAAC Cycle</div><div class="stat-sub">July 2023</div></div>
+    <div class="stat-card c-amber"><span class="stat-icon">🌿</span><div class="stat-value">⭐</div><div class="stat-label">Green Certified</div><div class="stat-sub">LED · Solar Aware</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--royal)"></span> Student Enrollment Trend</h3><canvas id="enrollChart" height="210"></canvas></div>
+    <div class="chart-card"><h3><span class="dot" style="background:var(--orange)"></span> Programmes Distribution</h3><canvas id="progPieChart" height="210"></canvas></div>
+  </div>
+  <div class="grid-3">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--green)"></span> Pass Rate by Programme (2024-25)</h3><canvas id="passChart" height="170"></canvas></div>
+    <div class="chart-card"><h3><span class="dot" style="background:var(--teal)"></span> Faculty Composition</h3><canvas id="facultyDonut" height="170"></canvas></div>
+    <div class="chart-card"><h3><span class="dot" style="background:var(--purple)"></span> Placement Overview</h3><canvas id="placementBar" height="170"></canvas></div>
+  </div>
+  <div class="grid-12">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--amber)"></span> Accreditation Milestones</h3>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-top:4px">
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#E3F2FD;border-radius:9px;border-left:4px solid var(--royal)"><span style="font-size:18px">🛡️</span><div><div style="font-weight:800;font-size:12.5px">UGC 2(f) &amp; 12B</div><div style="font-size:11px;color:var(--muted)">Certificate enclosed · Permanent Affiliation</div></div></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#E0F7FA;border-radius:9px;border-left:4px solid var(--teal)"><span style="font-size:18px">⭐</span><div><div style="font-weight:800;font-size:12.5px">Autonomous Status</div><div style="font-size:11px;color:var(--muted)">Conferred Nov 24, 2016 · Renewed Oct 14, 2024 by UGC</div></div></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#FFF8E1;border-radius:9px;border-left:4px solid var(--amber)"><span style="font-size:18px">🏅</span><div><div style="font-weight:800;font-size:12.5px">NAAC – 3 Cycles Completed</div><div style="font-size:11px;color:var(--muted)">1st: May 2006 · 2nd: May 2014 · 3rd: July 2023</div></div></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#E8F5E9;border-radius:9px;border-left:4px solid var(--green)"><span style="font-size:18px">🌿</span><div><div style="font-weight:800;font-size:12.5px">Green Audit &amp; RUSA</div><div style="font-size:11px;color:var(--muted)">Green Audit Cert · RUSA Infra 2.0 Comp 7 Completed</div></div></div>
+        <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:#F3E5F5;border-radius:9px;border-left:4px solid var(--purple)"><span style="font-size:18px">📊</span><div><div style="font-weight:800;font-size:12.5px">NIRF Rankings 2024-25</div><div style="font-size:11px;color:var(--muted)">7th in AP · 31st National · 451st Worldwide</div></div></div>
+      </div>
+    </div>
+    <div class="chart-card"><h3><span class="dot" style="background:var(--pink)"></span> Key Performance Indicators</h3>
+      <div class="progress-list" style="margin-top:4px">
+        <div class="progress-item"><div class="progress-header"><span class="progress-label">Student Pass Rate</span><span class="progress-val" style="color:var(--green)">100%</span></div><div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--green)"></div></div></div>
+        <div class="progress-item"><div class="progress-header"><span class="progress-label">Faculty with PhD</span><span class="progress-val" style="color:var(--royal)">25.4%</span></div><div class="progress-bar"><div class="progress-fill" style="width:25.4%;background:var(--royal)"></div></div></div>
+        <div class="progress-item"><div class="progress-header"><span class="progress-label">ICT-Enabled Classrooms</span><span class="progress-val" style="color:var(--teal)">37%</span></div><div class="progress-bar"><div class="progress-fill" style="width:37%;background:var(--teal)"></div></div></div>
+        <div class="progress-item"><div class="progress-header"><span class="progress-label">Scholarship Coverage</span><span class="progress-val" style="color:var(--amber)">74.9%</span></div><div class="progress-bar"><div class="progress-fill" style="width:74.9%;background:var(--amber)"></div></div></div>
+        <div class="progress-item"><div class="progress-header"><span class="progress-label">Placement Rate (Final Year)</span><span class="progress-val" style="color:var(--orange)">25.4%</span></div><div class="progress-bar"><div class="progress-fill" style="width:25.4%;background:var(--orange)"></div></div></div>
+        <div class="progress-item"><div class="progress-header"><span class="progress-label">MoU Follow-up Activities</span><span class="progress-val" style="color:var(--purple)">61 Acts</span></div><div class="progress-bar"><div class="progress-fill" style="width:82%;background:var(--purple)"></div></div></div>
+        <div class="progress-item"><div class="progress-header"><span class="progress-label">Library Automation</span><span class="progress-val" style="color:var(--pink)">~60%</span></div><div class="progress-bar"><div class="progress-fill" style="width:60%;background:var(--pink)"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ACADEMICS ══ -->
+<div class="tab-panel" id="tab-academics">
+  <div class="section-title">📚 Academic Programmes &amp; Curriculum</div>
+  <div class="stats-grid">
+    <div class="stat-card c-blue"><span class="stat-icon">📖</span><div class="stat-value">18</div><div class="stat-label">Programmes 2024-25</div></div>
+    <div class="stat-card c-orange"><span class="stat-icon">🎯</span><div class="stat-value">16</div><div class="stat-label">Value Added Courses</div></div>
+    <div class="stat-card c-green"><span class="stat-icon">✅</span><div class="stat-value">100%</div><div class="stat-label">Final Year Pass Rate</div></div>
+    <div class="stat-card c-teal"><span class="stat-icon">📊</span><div class="stat-value">609</div><div class="stat-label">Students Appeared</div></div>
+    <div class="stat-card c-purple"><span class="stat-icon">🔬</span><div class="stat-value">09</div><div class="stat-label">B.Sc Programmes</div></div>
+    <div class="stat-card c-pink"><span class="stat-icon">📝</span><div class="stat-value">05</div><div class="stat-label">B.A Programmes</div></div>
+  </div>
+  <div class="grid-2">
+    <div>
+      <div class="section-title" style="font-size:16px;margin-bottom:10px">🎓 All Programmes – 2024-25</div>
+      <div class="prog-grid">
+        <div class="prog-pill" style="border-left-color:var(--royal)">📜 BA Hons. Special English</div>
+        <div class="prog-pill" style="border-left-color:var(--royal)">📜 BA Hons. Special Urdu</div>
+        <div class="prog-pill" style="border-left-color:var(--royal)">📈 BA Hons. Economics</div>
+        <div class="prog-pill" style="border-left-color:var(--royal)">🗺️ BA Hons. History</div>
+        <div class="prog-pill" style="border-left-color:var(--royal)">⚖️ BA Hons. Political Science</div>
+        <div class="prog-pill" style="border-left-color:var(--orange)">💼 BCom Hons. General</div>
+        <div class="prog-pill" style="border-left-color:var(--orange)">💻 BCom Hons. Computer Apps</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">🌿 BSc Hons. Botany</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">⚗️ BSc Hons. Chemistry</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">💻 BSc Hons. Computer Science</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">📐 BSc Hons. Mathematics</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">🧪 BSc Hons. Organic Chemistry</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">💡 BSc Hons. Physics</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">🦎 BSc Hons. Zoology</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">📊 BSc Hons. Statistics</div>
+        <div class="prog-pill" style="border-left-color:var(--green)">🤖 BSc Hons. Data Science</div>
+        <div class="prog-pill" style="border-left-color:var(--purple)">🌐 MA (English)</div>
+        <div class="prog-pill" style="border-left-color:var(--purple)">🔬 MSc (Zoology)</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title" style="font-size:16px;margin-bottom:10px">🌟 Value Added Courses (2024-25)</div>
+      <div class="table-card" style="margin-bottom:0">
+        <table><thead><tr><th>#</th><th>Course</th><th>Category</th></tr></thead><tbody>
+          <tr><td>1</td><td>Business Communications</td><td><span class="badge badge-blue">Commerce</span></td></tr>
+          <tr><td>2</td><td>Journalism</td><td><span class="badge badge-orange">Arts</span></td></tr>
+          <tr><td>3</td><td>Hindi Journalism</td><td><span class="badge badge-orange">Arts</span></td></tr>
+          <tr><td>4</td><td>Artificial Jewellery</td><td><span class="badge badge-purple">Skill</span></td></tr>
+          <tr><td>5</td><td>Modern Indian Polity</td><td><span class="badge badge-orange">Arts</span></td></tr>
+          <tr><td>6</td><td>Spectrophotometry</td><td><span class="badge badge-teal">Science</span></td></tr>
+          <tr><td>7</td><td>Basic Optical Instruments</td><td><span class="badge badge-teal">Science</span></td></tr>
+          <tr><td>8</td><td>Basic Office Automation (MS Office)</td><td><span class="badge badge-blue">IT</span></td></tr>
+          <tr><td>9</td><td>Computer Literacy</td><td><span class="badge badge-blue">IT</span></td></tr>
+          <tr><td>10</td><td>Tally</td><td><span class="badge badge-blue">Commerce</span></td></tr>
+          <tr><td>11</td><td>Statistics for Data Science</td><td><span class="badge badge-teal">Science</span></td></tr>
+          <tr><td>12</td><td>Mushroom Cultivation</td><td><span class="badge badge-green">Agri</span></td></tr>
+          <tr><td>13</td><td>Floral Jewellery</td><td><span class="badge badge-purple">Skill</span></td></tr>
+          <tr><td>14</td><td>Clinical Laboratory Techniques</td><td><span class="badge badge-teal">Science</span></td></tr>
+          <tr><td>15</td><td>Quantitative Aptitude</td><td><span class="badge badge-orange">Career</span></td></tr>
+          <tr><td>16</td><td>Photography</td><td><span class="badge badge-purple">Creative</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+  <div class="table-card">
+    <h3>📋 Programme-wise Final Exam Results – 2024-25 (100% Pass – All Programmes)</h3>
+    <table><thead><tr><th>Programme</th><th>Appeared</th><th>Passed</th><th>Pass %</th><th>Status</th></tr></thead><tbody>
+      <tr><td>BA – History, Economics, Political Science (EM)</td><td>52</td><td>52</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>BA – History, Economics, Computer Applications (EM)</td><td>51</td><td>51</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>BA – History, Spl. Urdu, Computer Applications (UM)</td><td>17</td><td>17</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>BA – History, Adv. English, Tourism &amp; Travel Mgmt</td><td>23</td><td>23</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Com – General (EM)</td><td>47</td><td>47</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Com – Computer Applications</td><td>92</td><td>92</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Sc – Botany, Zoology, Chemistry (EM)</td><td>53</td><td>53</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Sc – Mathematics, Physics, Computer Science</td><td>43</td><td>43</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Sc – Mathematics, Electronics, Computer Science</td><td>34</td><td>34</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Sc – Mathematics, Statistics, Computer Science</td><td>52</td><td>52</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Sc – Biotechnology, Zoology, Chemistry</td><td>47</td><td>47</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Sc – Biochemistry, Microbiology, Chemistry</td><td>42</td><td>42</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>B.Sc – Botany, Chemistry, Horticulture (EM)</td><td>23</td><td>23</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr><td>BA Economics Honours</td><td>12</td><td>12</td><td>100%</td><td><span class="badge badge-green">✅ Clear</span></td></tr>
+      <tr style="background:#E8F5E9;font-weight:800"><td><strong>GRAND TOTAL</strong></td><td><strong>609</strong></td><td><strong>609</strong></td><td><strong style="color:var(--green)">100%</strong></td><td><span class="badge badge-green">🎉 Perfect</span></td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<!-- ══ FACULTY ══ -->
+<div class="tab-panel" id="tab-faculty">
+  <div class="section-title">👩‍🏫 Faculty Strength &amp; Qualifications</div>
+  <div class="stats-grid">
+    <div class="stat-card c-blue"><span class="stat-icon">👩‍🏫</span><div class="stat-value">25</div><div class="stat-label">Regular Faculty</div><div class="stat-sub">Sanctioned: 59 | Vacancies: 34</div></div>
+    <div class="stat-card c-teal"><span class="stat-icon">📋</span><div class="stat-value">20</div><div class="stat-label">Contract Faculty</div></div>
+    <div class="stat-card c-orange"><span class="stat-icon">👤</span><div class="stat-value">14</div><div class="stat-label">Guest Faculty</div></div>
+    <div class="stat-card c-purple"><span class="stat-icon">🎓</span><div class="stat-value">15</div><div class="stat-label">PhD Holders</div></div>
+    <div class="stat-card c-green"><span class="stat-icon">📜</span><div class="stat-value">23</div><div class="stat-label">M.Phil Holders</div></div>
+    <div class="stat-card c-navy"><span class="stat-icon">⚖️</span><div class="stat-value">26:1</div><div class="stat-label">Teacher:Student</div></div>
+    <div class="stat-card c-pink"><span class="stat-icon">👥</span><div class="stat-value">27</div><div class="stat-label">Non-Teaching Staff</div><div class="stat-sub">No Vacancies</div></div>
+    <div class="stat-card c-cyan"><span class="stat-icon">🏅</span><div class="stat-value">4</div><div class="stat-label">FDP Programs</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--royal)"></span> Faculty by Category (Stacked)</h3><canvas id="facCatChart" height="220"></canvas></div>
+    <div class="chart-card"><h3><span class="dot" style="background:var(--green)"></span> Qualification Distribution</h3><canvas id="qualChart" height="220"></canvas></div>
+  </div>
+  <div class="table-card">
+    <h3>📊 Faculty Qualification Details</h3>
+    <table><thead><tr><th>Category</th><th>Total</th><th>PG</th><th>M.Phil</th><th>Ph.D</th></tr></thead><tbody>
+      <tr><td>Regular</td><td>25</td><td>25</td><td>15</td><td>08</td></tr>
+      <tr><td>Contract</td><td>20</td><td>20</td><td>08</td><td>06</td></tr>
+      <tr><td>Guest</td><td>14</td><td>14</td><td>00</td><td>01</td></tr>
+      <tr style="background:#E8F5E9;font-weight:800"><td><strong>TOTAL</strong></td><td><strong>59</strong></td><td><strong>59</strong></td><td><strong>23</strong></td><td><strong>15</strong></td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<!-- ══ STUDENTS ══ -->
+<div class="tab-panel" id="tab-students">
+  <div class="section-title">👩‍🎓 Student Strength &amp; Support</div>
+  <div class="stats-grid">
+    <div class="stat-card c-pink"><span class="stat-icon">👩‍🎓</span><div class="stat-value">1662</div><div class="stat-label">Total Students</div><div class="stat-sub">2024-25</div></div>
+    <div class="stat-card c-blue"><span class="stat-icon">1️⃣</span><div class="stat-value">670</div><div class="stat-label">Year I</div></div>
+    <div class="stat-card c-teal"><span class="stat-icon">2️⃣</span><div class="stat-value">531</div><div class="stat-label">Year II</div></div>
+    <div class="stat-card c-orange"><span class="stat-icon">3️⃣</span><div class="stat-value">461</div><div class="stat-label">Year III</div></div>
+    <div class="stat-card c-green"><span class="stat-icon">🏦</span><div class="stat-value">1246</div><div class="stat-label">Scholarships</div></div>
+    <div class="stat-card c-amber"><span class="stat-icon">₹</span><div class="stat-value">29.9L</div><div class="stat-label">Scholarship Amt</div><div class="stat-sub">₹29,87,972</div></div>
+    <div class="stat-card c-purple"><span class="stat-icon">📈</span><div class="stat-value">116</div><div class="stat-label">Higher Education</div></div>
+    <div class="stat-card c-cyan"><span class="stat-icon">💼</span><div class="stat-value">169</div><div class="stat-label">Employment</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--pink)"></span> Year-wise Distribution (with 2025-26 Projection)</h3><canvas id="studentYearChart" height="220"></canvas></div>
+    <div class="chart-card"><h3><span class="dot" style="background:var(--green)"></span> Progression 2024-25</h3><canvas id="progressionChart" height="220"></canvas></div>
+  </div>
+  <div class="grid-2">
+    <div class="table-card" style="margin-bottom:0"><h3>📈 Higher Education (2024-25)</h3>
+      <table><thead><tr><th>Programme</th><th>Students</th></tr></thead><tbody>
+        <tr><td>B.A</td><td>09</td></tr><tr><td>B.Com</td><td>22</td></tr><tr><td>B.Sc</td><td>85</td></tr>
+        <tr style="background:#E3F2FD;font-weight:800"><td><strong>Total</strong></td><td><strong>116</strong></td></tr>
+      </tbody></table>
+    </div>
+    <div class="table-card" style="margin-bottom:0"><h3>💼 Employment (2024-25)</h3>
+      <table><thead><tr><th>Programme</th><th>Students</th></tr></thead><tbody>
+        <tr><td>B.A</td><td>42</td></tr><tr><td>B.Com</td><td>30</td></tr><tr><td>B.Sc</td><td>97</td></tr>
+        <tr style="background:#E8F5E9;font-weight:800"><td><strong>Total</strong></td><td><strong>169</strong></td></tr>
+      </tbody></table>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INFRASTRUCTURE ══ -->
+<div class="tab-panel" id="tab-infra">
+  <div class="section-title">🏗️ Infrastructure &amp; Facilities</div>
+  <div class="infra-grid">
+    <div class="infra-card"><div class="infra-icon">🏫</div><div class="infra-val">35</div><div class="infra-lbl">Classrooms</div></div>
+    <div class="infra-card"><div class="infra-icon">🔬</div><div class="infra-val">16</div><div class="infra-lbl">Laboratories</div></div>
+    <div class="infra-card"><div class="infra-icon">💻</div><div class="infra-val">03</div><div class="infra-lbl">Digital Classrooms</div></div>
+    <div class="infra-card"><div class="infra-icon">🖥️</div><div class="infra-val">02</div><div class="infra-lbl">Virtual Classrooms</div></div>
+    <div class="infra-card"><div class="infra-icon">📡</div><div class="infra-val">13</div><div class="infra-lbl">ICT Classrooms</div></div>
+    <div class="infra-card"><div class="infra-icon">🖱️</div><div class="infra-val">175</div><div class="infra-lbl">Computers</div></div>
+    <div class="infra-card"><div class="infra-icon">🖨️</div><div class="infra-val">37</div><div class="infra-lbl">Printers</div></div>
+    <div class="infra-card"><div class="infra-icon">📶</div><div class="infra-val">03</div><div class="infra-lbl">Wi-Fi Routers</div></div>
+    <div class="infra-card"><div class="infra-icon">🌐</div><div class="infra-val">40Mbps</div><div class="infra-lbl">Internet</div></div>
+    <div class="infra-card"><div class="infra-icon">🎭</div><div class="infra-val">01</div><div class="infra-lbl">Auditorium</div></div>
+    <div class="infra-card"><div class="infra-icon">💪</div><div class="infra-val">06</div><div class="infra-lbl">Gym Stations</div></div>
+    <div class="infra-card"><div class="infra-icon">💧</div><div class="infra-val">RO ✅</div><div class="infra-lbl">Water Facility</div></div>
+    <div class="infra-card"><div class="infra-icon">🚻</div><div class="infra-val">31</div><div class="infra-lbl">Student Toilets</div></div>
+    <div class="infra-card"><div class="infra-icon">♿</div><div class="infra-val">✅</div><div class="infra-lbl">Divyangan Friendly</div></div>
+    <div class="infra-card"><div class="infra-icon">🌿</div><div class="infra-val">LED ✅</div><div class="infra-lbl">Green/Solar</div></div>
+    <div class="infra-card"><div class="infra-icon">🍽️</div><div class="infra-val">✅</div><div class="infra-lbl">Canteen</div></div>
+    <div class="infra-card"><div class="infra-icon">📚</div><div class="infra-val">26,062</div><div class="infra-lbl">Library Books</div></div>
+    <div class="infra-card"><div class="infra-icon">📰</div><div class="infra-val">6,792</div><div class="infra-lbl">E-Journals</div></div>
+    <div class="infra-card"><div class="infra-icon">👣</div><div class="infra-val">150/day</div><div class="infra-lbl">Lib. Footfall</div></div>
+    <div class="infra-card"><div class="infra-icon">🔥</div><div class="infra-val">03</div><div class="infra-lbl">Fire Extinguishers</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--teal)"></span> Classroom Infrastructure</h3><canvas id="infraChart" height="220"></canvas></div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="section-title" style="font-size:15px;margin-bottom:8px">📚 Library &amp; Facilities</div>
+      <div style="padding:9px 12px;background:#E0F7FA;border-radius:8px;border-left:4px solid var(--teal);font-size:12.5px">✅ <strong>SOUL Software</strong> — Partial Automation | NList Subscribed</div>
+      <div style="padding:9px 12px;background:#E8F5E9;border-radius:8px;border-left:4px solid var(--green);font-size:12.5px">📈 <strong>71 New Books</strong> Purchased (2024-25) | Internet available</div>
+      <div style="padding:9px 12px;background:#FFF3E0;border-radius:8px;border-left:4px solid var(--orange);font-size:12.5px">🖥️ <strong>ELL Centre</strong> Available | <strong>JKC Lab</strong> Active</div>
+      <div style="padding:9px 12px;background:#E3F2FD;border-radius:8px;border-left:4px solid var(--royal);font-size:12.5px">🏥 <strong>Health Centre</strong> | 📝 <strong>Exam Cell</strong> | 🩺 <strong>Grievance Cell</strong> — All Available</div>
+      <div style="padding:9px 12px;background:#F3E5F5;border-radius:8px;border-left:4px solid var(--purple);font-size:12.5px">🌿 <strong>Green Audit Certified</strong> | All rooms use LED bulbs | Solar Aware</div>
+      <div style="padding:9px 12px;background:#E8F5E9;border-radius:8px;border-left:4px solid var(--green);font-size:12.5px">💻 <strong>03 Computer Labs</strong> | 175 Computers | 40Mbps Internet</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ RESEARCH ══ -->
+<div class="tab-panel" id="tab-research">
+  <div class="section-title">🔬 Research, MoUs &amp; IQAC Contributions</div>
+  <div class="stats-grid">
+    <div class="stat-card c-blue"><span class="stat-icon">🤝</span><div class="stat-value">30</div><div class="stat-label">Active MoUs</div></div>
+    <div class="stat-card c-teal"><span class="stat-icon">📋</span><div class="stat-value">61</div><div class="stat-label">Follow-up Activities</div></div>
+    <div class="stat-card c-orange"><span class="stat-icon">📄</span><div class="stat-value">05</div><div class="stat-label">UGC-CARE Publications</div></div>
+    <div class="stat-card c-green"><span class="stat-icon">🚀</span><div class="stat-value">✅</div><div class="stat-label">Incubation Centre</div></div>
+    <div class="stat-card c-purple"><span class="stat-icon">🎓</span><div class="stat-value">4</div><div class="stat-label">FDP Programs</div></div>
+    <div class="stat-card c-pink"><span class="stat-icon">📊</span><div class="stat-value">15</div><div class="stat-label">Cert. Course Depts</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--orange)"></span> MoU &amp; Activities Trend</h3><canvas id="mouChart" height="220"></canvas></div>
+    <div>
+      <div class="section-title" style="font-size:15px;margin-bottom:10px">💡 Key IQAC Contributions</div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div class="achieve-card" style="padding:10px 12px"><div class="achieve-icon" style="background:#E3F2FD;width:32px;height:32px;border-radius:7px;font-size:15px">🌐</div><div class="achieve-text"><h4>Online Admission – OAMDC</h4><p>14 Single Major programmes via CCE portal</p></div></div>
+        <div class="achieve-card" style="padding:10px 12px"><div class="achieve-icon" style="background:#E0F7FA;width:32px;height:32px;border-radius:7px;font-size:15px">🎓</div><div class="achieve-text"><h4>FDP – ACT Academy, Kerala</h4><p>1-week Online FDP on Pedagogical Innovations (Dec 2023–Jan 2024)</p></div></div>
+        <div class="achieve-card" style="padding:10px 12px"><div class="achieve-icon" style="background:#FFF8E1;width:32px;height:32px;border-radius:7px;font-size:15px">📡</div><div class="achieve-text"><h4>National Webinar – PO-CO Mapping</h4><p>06.10.2023 · AI Tools Webinar by IETE Hyderabad</p></div></div>
+        <div class="achieve-card" style="padding:10px 12px"><div class="achieve-icon" style="background:#E8F5E9;width:32px;height:32px;border-radius:7px;font-size:15px">💻</div><div class="achieve-text"><h4>60 New Computers Procured</h4><p>Additional Computer Lab from Special Fee fund</p></div></div>
+        <div class="achieve-card" style="padding:10px 12px"><div class="achieve-icon" style="background:#F3E5F5;width:32px;height:32px;border-radius:7px;font-size:15px">🏢</div><div class="achieve-text"><h4>349 Students Placed – 11 Drives</h4><p>On/off-campus placement drives conducted</p></div></div>
+        <div class="achieve-card" style="padding:10px 12px"><div class="achieve-icon" style="background:#FCE4EC;width:32px;height:32px;border-radius:7px;font-size:15px">📚</div><div class="achieve-text"><h4>LMS Content Development</h4><p>Faculty prepared Learning Management System content in all disciplines</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PLACEMENTS ══ -->
+<div class="tab-panel" id="tab-placements">
+  <div class="section-title">💼 Placements, JKC &amp; Internships</div>
+  <div class="stats-grid">
+    <div class="stat-card c-orange"><span class="stat-icon">🏢</span><div class="stat-value">10</div><div class="stat-label">Companies Visited</div></div>
+    <div class="stat-card c-green"><span class="stat-icon">✅</span><div class="stat-value">155</div><div class="stat-label">Students Placed</div></div>
+    <div class="stat-card c-blue"><span class="stat-icon">💻</span><div class="stat-value">180</div><div class="stat-label">JKC Trained</div></div>
+    <div class="stat-card c-teal"><span class="stat-icon">📊</span><div class="stat-value">543</div><div class="stat-label">CSP Participants</div></div>
+    <div class="stat-card c-purple"><span class="stat-icon">🔗</span><div class="stat-value">617</div><div class="stat-label">Internships Done</div></div>
+    <div class="stat-card c-pink"><span class="stat-icon">💰</span><div class="stat-value">223</div><div class="stat-label">Paid Internships</div></div>
+    <div class="stat-card c-amber"><span class="stat-icon">🌐</span><div class="stat-value">55</div><div class="stat-label">Online Internships</div></div>
+    <div class="stat-card c-navy"><span class="stat-icon">🏭</span><div class="stat-value">324</div><div class="stat-label">Physical Internships</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--orange)"></span> Placement by Programme</h3><canvas id="placePieChart" height="220"></canvas></div>
+    <div class="chart-card"><h3><span class="dot" style="background:var(--teal)"></span> Internship Types</h3><canvas id="internChart" height="220"></canvas></div>
+  </div>
+  <div class="grid-3">
+    <div class="table-card" style="margin-bottom:0"><h3>📊 CSP Participation</h3><table><thead><tr><th>Programme</th><th>Students</th></tr></thead><tbody><tr><td>B.A</td><td>111</td></tr><tr><td>B.Com</td><td>189</td></tr><tr><td>B.Sc</td><td>243</td></tr><tr style="background:#E3F2FD;font-weight:800"><td><strong>Total</strong></td><td><strong>543</strong></td></tr></tbody></table></div>
+    <div class="table-card" style="margin-bottom:0"><h3>🔗 Internships Done</h3><table><thead><tr><th>Programme</th><th>Students</th></tr></thead><tbody><tr><td>B.A</td><td>143</td></tr><tr><td>B.Com</td><td>141</td></tr><tr><td>B.Sc</td><td>333</td></tr><tr style="background:#E8F5E9;font-weight:800"><td><strong>Total</strong></td><td><strong>617</strong></td></tr></tbody></table></div>
+    <div class="table-card" style="margin-bottom:0"><h3>🏆 Internship Types</h3><table><thead><tr><th>Type</th><th>Count</th></tr></thead><tbody><tr><td>Physical</td><td>324</td></tr><tr><td>Online</td><td>55</td></tr><tr><td>Paid</td><td>223</td></tr></tbody></table></div>
+  </div>
+</div>
+
+<!-- ══ AWARDS ══ -->
+<div class="tab-panel" id="tab-awards">
+  <div class="section-title">🏆 Awards, Rankings &amp; Achievements</div>
+  <div class="stats-grid" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr))">
+    <div class="stat-card c-amber" style="border-top-width:6px"><span class="stat-icon">🌟</span><div class="stat-value">#7</div><div class="stat-label">AP State Rank (NIRF)</div><div class="stat-sub">2024-25</div></div>
+    <div class="stat-card c-blue" style="border-top-width:6px"><span class="stat-icon">🇮🇳</span><div class="stat-value">#31</div><div class="stat-label">National Rank (NIRF)</div><div class="stat-sub">2024-25</div></div>
+    <div class="stat-card c-teal" style="border-top-width:6px"><span class="stat-icon">🌐</span><div class="stat-value">#451</div><div class="stat-label">World Rank (NIRF)</div><div class="stat-sub">2024-25</div></div>
+    <div class="stat-card c-green" style="border-top-width:6px"><span class="stat-icon">🏅</span><div class="stat-value">AP Best</div><div class="stat-label">Teacher Award</div><div class="stat-sub">Dr. G. Vijaya Lakshmi Devi</div></div>
+  </div>
+  <div class="achieve-grid">
+    <div class="achieve-card" style="border-left:4px solid var(--amber)"><div class="achieve-icon" style="background:#FFF8E1">🏅</div><div class="achieve-text"><h4>AP State Best Teacher Award – 2024</h4><p>Dr. G. Vijaya Lakshmi Devi, Lecturer in Economics<br><strong>Date: 11 November 2024</strong></p></div></div>
+    <div class="achieve-card" style="border-left:4px solid var(--royal)"><div class="achieve-icon" style="background:#E3F2FD">🌐</div><div class="achieve-text"><h4>NIRF Rankings 2024-25</h4><p>7th in AP State · 31st Nationally · 451st Worldwide. Data submitted yearly.</p></div></div>
+    <div class="achieve-card" style="border-left:4px solid var(--teal)"><div class="achieve-icon" style="background:#E0F7FA">🏐</div><div class="achieve-text"><h4>AP Volleyball Team Selection</h4><p>Sri K. Madan Mohan, Lect. in Physical Education<br>Selected 09.11.2024 · All India Civil Services Tournament</p></div></div>
+    <div class="achieve-card" style="border-left:4px solid var(--purple)"><div class="achieve-icon" style="background:#F3E5F5">🤸</div><div class="achieve-text"><h4>YVU Kabaddi – South Zone</h4><p>P. Indravathi, S. Ushasree, K. Sailaja selected<br>Alagappa University, 29 Nov – 1 Dec 2024</p></div></div>
+    <div class="achieve-card" style="border-left:4px solid var(--green)"><div class="achieve-icon" style="background:#E8F5E9">🌿</div><div class="achieve-text"><h4>Green Audit Certification</h4><p>Certified by Govt. Green Audit Agency. LED campus, solar aware.</p></div></div>
+    <div class="achieve-card" style="border-left:4px solid var(--orange)"><div class="achieve-icon" style="background:#FFF3E0">⭐</div><div class="achieve-text"><h4>Autonomous Status Renewed</h4><p>UGC New Delhi renewed on 14 October 2024<br>Originally conferred 24 November 2016</p></div></div>
+  </div>
+</div>
+
+<!-- ══ GOVERNANCE ══ -->
+<div class="tab-panel" id="tab-governance">
+  <div class="section-title">⚖️ Governance, Policies &amp; Best Practices</div>
+  <div class="stats-grid">
+    <div class="stat-card c-blue"><span class="stat-icon">🏛️</span><div class="stat-value">59</div><div class="stat-label">Committees</div></div>
+    <div class="stat-card c-teal"><span class="stat-icon">📋</span><div class="stat-value">03</div><div class="stat-label">Key Policies</div></div>
+    <div class="stat-card c-orange"><span class="stat-icon">👥</span><div class="stat-value">05</div><div class="stat-label">Alumni Meetings</div></div>
+    <div class="stat-card c-green"><span class="stat-icon">📰</span><div class="stat-value">✅</div><div class="stat-label">Monthly Newsletter</div></div>
+    <div class="stat-card c-purple"><span class="stat-icon">📖</span><div class="stat-value">✅</div><div class="stat-label">College Handbook</div></div>
+    <div class="stat-card c-pink"><span class="stat-icon">📊</span><div class="stat-value">✅</div><div class="stat-label">Biometric Attendance</div></div>
+  </div>
+  <div class="grid-2">
+    <div>
+      <div class="section-title" style="font-size:15px;margin-bottom:10px">🌟 Best Practices</div>
+      <div class="achieve-card" style="margin-bottom:10px;border-left:5px solid var(--royal)"><div class="achieve-icon" style="background:#E3F2FD;font-size:24px">🔧</div><div class="achieve-text"><h4 style="font-size:14px">Skill Will Club</h4><p>Developing vocational &amp; life skills among women students. Building job-ready capabilities aligned with industry needs.</p></div></div>
+      <div class="achieve-card" style="border-left:5px solid var(--orange)"><div class="achieve-icon" style="background:#FFF3E0;font-size:24px">🧵</div><div class="achieve-text"><h4 style="font-size:14px">Sew It and Wear It</h4><p>Tailoring &amp; textile design for self-employment. Students learn design-to-product skills for entrepreneurship.</p></div></div>
+      <div class="section-title" style="font-size:15px;margin-top:16px;margin-bottom:10px">📋 Policies Implemented</div>
+      <div style="display:flex;flex-direction:column;gap:7px">
+        <div style="padding:8px 12px;background:#E3F2FD;border-radius:8px;border-left:4px solid var(--royal);font-size:12.5px"><strong>🏗️ Infrastructure Policy</strong></div>
+        <div style="padding:8px 12px;background:#E0F7FA;border-radius:8px;border-left:4px solid var(--teal);font-size:12.5px"><strong>💻 IT Policy</strong></div>
+        <div style="padding:8px 12px;background:#FFF3E0;border-radius:8px;border-left:4px solid var(--orange);font-size:12.5px"><strong>🎓 Online Admission Policy</strong> — via OAMDC/CCE portal</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-title" style="font-size:15px;margin-bottom:10px">🏛️ Autonomous College Bodies</div>
+      <div style="display:flex;flex-direction:column;gap:9px">
+        <div class="info-card" style="border-left-color:var(--royal)"><h3>📜 Academic Council</h3><p>File maintained at Academic Coordinator. Curriculum enrichment decisions recorded.</p></div>
+        <div class="info-card" style="border-left-color:var(--teal)"><h3>📝 Controller of Examinations</h3><p>CIA conducted. Grievance mechanism, transparent paper-setting &amp; secure info management in place.</p></div>
+        <div class="info-card" style="border-left-color:var(--orange)"><h3>📚 Board of Studies</h3><p>Curriculum update mechanisms active. Justification reports for revamps maintained.</p></div>
+        <div class="info-card" style="border-left-color:var(--green)"><h3>🏛️ Governing Body</h3><p>File maintained. Resolutions documented. CPDC/Finance Committee Minutes maintained.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAAC & AAA ══ -->
+<div class="tab-panel" id="tab-naac">
+  <div class="section-title">✅ NAAC Peer Recommendations &amp; AAA Compliance</div>
+  <div class="stats-grid">
+    <div class="stat-card c-green"><span class="stat-icon">✅</span><div class="stat-value">10</div><div class="stat-label">Recommendations</div><div class="stat-sub">All addressed</div></div>
+    <div class="stat-card c-blue"><span class="stat-icon">📅</span><div class="stat-value">2023</div><div class="stat-label">3rd NAAC Cycle</div><div class="stat-sub">July 2023</div></div>
+    <div class="stat-card c-orange"><span class="stat-icon">📋</span><div class="stat-value">I–IV</div><div class="stat-label">AAA Proformas</div></div>
+    <div class="stat-card c-teal"><span class="stat-icon">🌐</span><div class="stat-value">✅</div><div class="stat-label">Uploaded on Website</div></div>
+  </div>
+  <div class="section-title" style="font-size:15px;margin-bottom:10px">📋 NAAC Peer Team Recommendations – Action Taken</div>
+  <div class="rec-grid">
+    <div class="rec-item"><div class="rec-num">01</div><div class="rec-text">Introduce new PG &amp; job-oriented courses</div><div class="rec-action">✅ 22 Job-oriented Certificate Courses conducted</div></div>
+    <div class="rec-item"><div class="rec-num">02</div><div class="rec-text">More FDP programs; strengthen feedback mechanism</div><div class="rec-action">✅ FDP with ACT Academy · ToT for colleges · SEL/SEEK Programme</div></div>
+    <div class="rec-item"><div class="rec-num">03</div><div class="rec-text">Research culture &amp; MOUs with industries</div><div class="rec-action">✅ 30 MOUs/Linkages with Institutions &amp; Industries around Kadapa</div></div>
+    <div class="rec-item" style="border-left-color:var(--amber)"><div class="rec-num">04</div><div class="rec-text">Internship &amp; training for PG programmes</div><div class="rec-action">⏳ Discussed in Governing Body – implementation pending</div></div>
+    <div class="rec-item"><div class="rec-num">05</div><div class="rec-text">Strengthen Alumni Association; online portal</div><div class="rec-action">✅ Registered (No. 378/23) · Fund enhanced · 5 meetings conducted</div></div>
+    <div class="rec-item" style="border-left-color:var(--amber)"><div class="rec-num">06</div><div class="rec-text">Encourage publications; seed money &amp; incentives</div><div class="rec-action">⏳ Proposal to allocate seed money from Autonomous grants</div></div>
+    <div class="rec-item"><div class="rec-num">07</div><div class="rec-text">Academic &amp; Green audit; governance policies</div><div class="rec-action">✅ Green Audit Certificate obtained · Governance policies implemented</div></div>
+    <div class="rec-item"><div class="rec-num">08</div><div class="rec-text">Innovation &amp; Incubation Centre for start-ups</div><div class="rec-action">✅ Incubation Centre Established</div></div>
+    <div class="rec-item"><div class="rec-num">09</div><div class="rec-text">Library automation; more books &amp; e-resources</div><div class="rec-action">✅ 71 new books · 6,792 e-journals · NList subscribed</div></div>
+    <div class="rec-item"><div class="rec-num">10</div><div class="rec-text">Career counselling, placement &amp; competitive coaching</div><div class="rec-action">✅ 4 campus drives · 132 students shortlisted · JKC coaching active</div></div>
+  </div>
+  <div class="grid-2">
+    <div class="chart-card"><h3><span class="dot" style="background:var(--green)"></span> Recommendation Status</h3><canvas id="recChart" height="220"></canvas></div>
+    <div class="chart-card"><h3><span class="dot" style="background:var(--royal)"></span> AAA &amp; CCE Compliance</h3>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-top:6px">
+        <div style="padding:10px 13px;background:#E8F5E9;border-radius:9px;border-left:4px solid var(--green);font-size:13px"><strong>2022-23:</strong> College exempted from AAA of CCE (during NAAC 3rd Cycle)</div>
+        <div style="padding:10px 13px;background:#E3F2FD;border-radius:9px;border-left:4px solid var(--royal);font-size:13px"><strong>Proformas I–IV:</strong> Filled and uploaded on college website</div>
+        <div style="padding:10px 13px;background:#FFF8E1;border-radius:9px;border-left:4px solid var(--amber);font-size:13px"><strong>Website:</strong> <a href="https://skrgdcwakdp.edu.in/" target="_blank">https://skrgdcwakdp.edu.in/</a></div>
+        <div style="padding:10px 13px;background:#F3E5F5;border-radius:9px;border-left:4px solid var(--purple);font-size:13px"><strong>SSS 2023-24:</strong> <a href="https://www.skrgdcwakdp.edu.in/userfiles/SSS%20Overall%202023-2024(1).pdf" target="_blank">Student Satisfaction Survey Report</a></div>
+        <div style="padding:10px 13px;background:#E0F7FA;border-radius:9px;border-left:4px solid var(--teal);font-size:13px"><strong>AISHE:</strong> Data submitted 17/02/2024 · NIRF data submitted yearly</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  🏛️ <strong>SKR &amp; SKR Govt. College for Women (A), Kadapa</strong> ·
+  <a href="https://skrgdcwakdp.edu.in/" target="_blank">skrgdcwakdp.edu.in</a> ·
+  kadapaw.jkc@gmail.com · Ph: 9491355579 &nbsp;|&nbsp;
+  Dashboard prepared for <strong>AAA 2025-26</strong> · Presented by Dr. V. Saleem Basha, Principal
+  <div class="dev-line">
+    © <span id="copy-year"></span> &nbsp;|&nbsp;
+    💻 Designed &amp; Developed by &nbsp;<strong>Dr. C. V. Krishnaveni</strong>,
+    Lecturer in Computer Science &amp; IQAC Coordinator,
+    SKR &amp; SKR Govt. College for Women (A), Kadapa, Andhra Pradesh, India.
+    &nbsp;|&nbsp; All Rights Reserved.
+  </div>
+</div>
+
+<script>
+// ── DATES
+document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-IN',{day:'2-digit',month:'long',year:'numeric'});
+document.getElementById('copy-year').textContent  = new Date().getFullYear();
+
+// ── TAB SWITCHING
+function showTab(id, el) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+  if (!window._drawn) window._drawn = {};
+  if (!window._drawn[id]) { window._drawn[id] = true; setTimeout(()=>drawChartsFor(id), 60); }
+}
+
+// ── COUNTER ANIMATION
+function animCount(id, target, dur) {
+  const el = document.getElementById(id); if (!el) return;
+  let v = 0, step = target / (dur / 16);
+  const t = setInterval(() => {
+    v += step; if (v >= target) { v = target; clearInterval(t); }
+    el.textContent = Math.floor(v).toLocaleString('en-IN');
+  }, 16);
+}
+
+// ── PALETTE
+const P = ['#1565C0','#00838F','#F57C00','#2E7D32','#6A1B9A','#D81B60','#00ACC1','#FFB300','#C62828','#0D1B4B'];
+
+// ── GET CANVAS CONTEXT
+function G(id) {
+  const c = document.getElementById(id); if (!c) return null;
+  const ctx = c.getContext('2d');
+  const w = c.parentElement.clientWidth - 36;
+  c.width = w > 50 ? w : 400;
+  c.height = parseInt(c.getAttribute('height')) || 220;
+  ctx.clearRect(0, 0, c.width, c.height);
+  return { ctx, w: c.width, h: c.height };
+}
+
+// ── BAR CHART
+function bar(id, labels, datasets, opts) {
+  const g = G(id); if (!g) return;
+  const { ctx, w, h } = g;
+  const pd = { t: 28, r: 16, b: 42, l: 48 };
+  const cw = w - pd.l - pd.r, ch = h - pd.t - pd.b;
+  const multi = datasets.length > 1;
+  const n = labels.length, ds = datasets.length;
+  const maxV = Math.max(...datasets.flatMap(d => d.data)) * 1.15 || 1;
+  const bw = multi ? (cw / n) * 0.75 / ds : (cw / n) * 0.55;
+
+  // grid
+  for (let i = 0; i <= 4; i++) {
+    const y = pd.t + ch - (i / 4) * ch;
+    ctx.strokeStyle = '#E3EAF8'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pd.l, y); ctx.lineTo(pd.l + cw, y); ctx.stroke();
+    ctx.fillStyle = '#78909C'; ctx.font = '10px Segoe UI,Arial'; ctx.textAlign = 'right';
+    ctx.fillText(Math.round((i / 4) * maxV).toLocaleString('en-IN'), pd.l - 5, y + 4);
+  }
+  // bars
+  datasets.forEach((d, di) => {
+    d.data.forEach((v, i) => {
+      const bh = (v / maxV) * ch;
+      const x = multi
+        ? pd.l + (i / n) * cw + (cw / n) * 0.125 + di * (bw + 2)
+        : pd.l + (i / n) * cw + ((cw / n) - bw) / 2;
+      const y = pd.t + ch - bh;
+      ctx.fillStyle = d.color || P[di % P.length];
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, bw, bh, 3); else ctx.rect(x, y, bw, bh);
+      ctx.fill();
+      ctx.fillStyle = '#37474F'; ctx.font = 'bold 9px Segoe UI,Arial'; ctx.textAlign = 'center';
+      ctx.fillText(v.toLocaleString('en-IN'), x + bw / 2, y - 3);
+    });
+  });
+  // x labels
+  ctx.fillStyle = '#546E7A'; ctx.font = '11px Segoe UI,Arial'; ctx.textAlign = 'center';
+  labels.forEach((l, i) => ctx.fillText(l, pd.l + (i / n) * cw + (cw / n) / 2, pd.t + ch + 15));
+  // legend
+  if (multi) {
+    let lx = pd.l;
+    datasets.forEach((d, di) => {
+      ctx.fillStyle = d.color || P[di % P.length]; ctx.fillRect(lx, 7, 9, 9);
+      ctx.fillStyle = '#37474F'; ctx.font = '10px Segoe UI,Arial'; ctx.textAlign = 'left';
+      ctx.fillText(d.label || '', lx + 13, 16);
+      lx += ctx.measureText(d.label || '').width + 26;
+    });
+  }
+}
+
+// ── DONUT CHART
+function donut(id, labels, data, colors, cText) {
+  const g = G(id); if (!g) return;
+  const { ctx, w, h } = g;
+  const cx = w * 0.40, cy = h / 2;
+  const ro = Math.min(cx, cy) * 0.82, ri = ro * 0.55;
+  const total = data.reduce((a, b) => a + b, 0);
+  let start = -Math.PI / 2;
+  data.forEach((v, i) => {
+    const a = (v / total) * 2 * Math.PI;
+    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.arc(cx, cy, ro, start, start + a);
+    ctx.arc(cx, cy, ri, start + a, start, true); ctx.closePath();
+    ctx.fillStyle = colors[i % colors.length]; ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 3; ctx.stroke();
+    start += a;
+  });
+  // center text
+  ctx.fillStyle = '#1A237E'; ctx.font = 'bold 13px Segoe UI,Arial'; ctx.textAlign = 'center';
+  ctx.fillText(cText || total, cx, cy + 5);
+  // legend
+  const lx = w * 0.83;
+  let ly = h / 2 - (labels.length * 19) / 2;
+  labels.forEach((l, i) => {
+    const pct = Math.round(data[i] / total * 100);
+    ctx.fillStyle = colors[i % colors.length]; ctx.fillRect(lx, ly, 11, 11);
+    ctx.fillStyle = '#37474F'; ctx.font = '10.5px Segoe UI,Arial'; ctx.textAlign = 'left';
+    ctx.fillText(l + ' (' + pct + '%)', lx + 15, ly + 10);
+    ly += 20;
+  });
+}
+
+// ── LINE CHART
+function line(id, labels, datasets) {
+  const g = G(id); if (!g) return;
+  const { ctx, w, h } = g;
+  const pd = { t: 28, r: 16, b: 42, l: 52 };
+  const cw = w - pd.l - pd.r, ch = h - pd.t - pd.b;
+  const n = labels.length;
+  const maxV = Math.max(...datasets.flatMap(d => d.data)) * 1.15 || 1;
+  // grid
+  for (let i = 0; i <= 4; i++) {
+    const y = pd.t + ch - (i / 4) * ch;
+    ctx.strokeStyle = '#E3EAF8'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pd.l, y); ctx.lineTo(pd.l + cw, y); ctx.stroke();
+    ctx.fillStyle = '#78909C'; ctx.font = '10px Segoe UI,Arial'; ctx.textAlign = 'right';
+    ctx.fillText(Math.round((i / 4) * maxV), pd.l - 5, y + 4);
+  }
+  datasets.forEach((d, di) => {
+    const pts = d.data.map((v, i) => ({ x: pd.l + (i / (n - 1)) * cw, y: pd.t + ch - (v / maxV) * ch }));
+    const col = d.color || P[di];
+    // fill
+    ctx.beginPath(); ctx.moveTo(pts[0].x, pd.t + ch);
+    pts.forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.lineTo(pts[pts.length - 1].x, pd.t + ch); ctx.closePath();
+    ctx.fillStyle = col; ctx.globalAlpha = 0.12; ctx.fill(); ctx.globalAlpha = 1;
+    // line
+    ctx.beginPath(); ctx.moveTo(pts[0].x, pts[0].y);
+    pts.forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.stroke();
+    // dots
+    pts.forEach(p => {
+      ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = col; ctx.fill(); ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; ctx.stroke();
+    });
+  });
+  // x labels
+  ctx.fillStyle = '#546E7A'; ctx.font = '11px Segoe UI,Arial'; ctx.textAlign = 'center';
+  labels.forEach((l, i) => ctx.fillText(l, pd.l + (i / (n - 1)) * cw, pd.t + ch + 15));
+  // legend
+  let lx = pd.l;
+  datasets.forEach((d, di) => {
+    const col = d.color || P[di];
+    ctx.fillStyle = col; ctx.fillRect(lx, 7, 9, 9);
+    ctx.fillStyle = '#37474F'; ctx.font = '10px Segoe UI,Arial'; ctx.textAlign = 'left';
+    ctx.fillText(d.label || '', lx + 13, 16);
+    lx += ctx.measureText(d.label || '').width + 26;
+  });
+}
+
+// ── DRAW CHARTS PER TAB
+function drawChartsFor(tab) {
+  if (tab === 'overview') {
+    bar('enrollChart',['2022-23','2023-24','2024-25','2025-26*'],[
+      {label:'Year I',  data:[620,645,670,695],color:'#1565C0'},
+      {label:'Year II', data:[500,515,531,560],color:'#00838F'},
+      {label:'Year III',data:[420,445,461,490],color:'#F57C00'}]);
+    donut('progPieChart',['B.A (5)','B.Com (2)','B.Sc (9)','PG (2)'],[5,2,9,2],
+      ['#1565C0','#F57C00','#2E7D32','#6A1B9A'],'18 Progs');
+    bar('passChart',['B.A','B.Com','B.Sc','Overall'],
+      [{data:[100,100,100,100],color:'#2E7D32'}]);
+    donut('facultyDonut',['Regular (25)','Contract (20)','Guest (14)'],[25,20,14],
+      ['#1565C0','#00838F','#F57C00'],'59 Staff');
+    bar('placementBar',['Placed','JKC','Internship','CSP'],
+      [{data:[155,180,617,543],color:'#6A1B9A'}]);
+  }
+  if (tab === 'faculty') {
+    bar('facCatChart',['Regular','Contract','Guest'],[
+      {label:'PhD',   data:[8,6,1], color:'#6A1B9A'},
+      {label:'M.Phil',data:[15,8,0],color:'#00838F'},
+      {label:'PG',   data:[2,6,13],color:'#1E88E5'}]);
+    bar('qualChart',['PG','M.Phil','PhD','NET/SET'],
+      [{data:[59,23,15,8],color:null}]);
+  }
+  if (tab === 'students') {
+    bar('studentYearChart',['Year I','Year II','Year III'],[
+      {label:'2024-25', data:[670,531,461],color:'#1565C0'},
+      {label:'2025-26*',data:[695,560,490],color:'#FFB300'}]);
+    bar('progressionChart',['B.A','B.Com','B.Sc'],[
+      {label:'Higher Ed',data:[9,22,85], color:'#1565C0'},
+      {label:'Employment',data:[42,30,97],color:'#2E7D32'}]);
+  }
+  if (tab === 'infra') {
+    bar('infraChart',['Classrooms','Labs','Digital','ICT','Virtual'],
+      [{data:[35,16,3,13,2],color:null}]);
+  }
+  if (tab === 'research') {
+    line('mouChart',['2021-22','2022-23','2023-24','2024-25','2025-26*'],[
+      {label:'MoUs',        data:[18,22,26,30,35],color:'#1565C0'},
+      {label:'Follow-up',   data:[30,40,52,61,70],color:'#F57C00'}]);
+  }
+  if (tab === 'placements') {
+    donut('placePieChart',['B.A (42)','B.Com (30)','B.Sc (83)'],[42,30,83],
+      ['#1565C0','#F57C00','#2E7D32'],'155 Placed');
+    bar('internChart',['Physical','Online','Paid'],
+      [{data:[324,55,223],color:null}]);
+  }
+  if (tab === 'naac') {
+    donut('recChart',['Implemented (8)','In Progress (2)'],[8,2],
+      ['#2E7D32','#FFB300'],'10 Recs');
+  }
+}
+
+// ── INIT
+window.addEventListener('load', () => {
+  animCount('cnt-prog', 18,   1000);
+  animCount('cnt-stu',  1662, 1400);
+  animCount('cnt-fac',  59,   1000);
+  animCount('cnt-mou',  30,   1000);
+  window._drawn = { overview: true };
+  setTimeout(() => drawChartsFor('overview'), 100);
+});
+</script>
+</body>
+</html>
